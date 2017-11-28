@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <head>
+  <link rel="stylesheet" type="text/css" media="all" href="https://ipt.sibbr.gov.br/repatriados/styles/reset.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="https://ipt.sibbr.gov.br/repatriados/styles/text.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="https://ipt.sibbr.gov.br/repatriados/styles/960_24_col.css" />
+ 	<link rel="stylesheet" type="text/css" href="https://ipt.sibbr.gov.br/repatriados/styles/main.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="https://ipt.sibbr.gov.br/repatriados/styles/jquery/dataTable.css"/>
+ 	<link rel="shortcut icon" href="https://ipt.sibbr.gov.br/repatriados/images/icons/favicon-16x16.png" type="image/x-icon" />
+	<link href="https://ipt.sibbr.gov.br/repatriados/rss.do" title="Latest Resources" rel="alternate" type="application/rss+xml" />
+  <link media="all" type="text/css" href="https://ipt.sibbr.gov.br/repatriados/styles/jquery/jquery-ui.min-1.11.0.css" rel="stylesheet" />
+  <!-- for css overrides needed for customizations -->
+  <link rel="stylesheet" type="text/css" href="https://ipt.sibbr.gov.br/repatriados/styles/custom.css" />
+  <!-- for support of old browsers, like IE8. See http://modernizr.com/docs/#html5inie -->
+  <script type="text/javascript" src="https://ipt.sibbr.gov.br/repatriados/js/modernizr.js"></script>
+  <script type="text/javascript" src="https://ipt.sibbr.gov.br/repatriados/js/jquery/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://ipt.sibbr.gov.br/repatriados/js/jquery/jquery-ui.min-1.11.0.js"></script>
+	<script type="text/javascript" src="https://ipt.sibbr.gov.br/repatriados/js/global.js"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-74267846-1']);
+	  _gaq.push(['_trackPageview']);
+	  _gaq.push(['gbif._setAccount', 'UA-8100222-1']);
+	  _gaq.push(['gbif._trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+      <meta name="description" content="The Integrated Publishing Toolkit (IPT) is a tool developed by the Global Biodiversity Information Facility (GBIF) to provide an easy and efficient way of publishing biodiversity data." charset="UTF-8"}" />
+      <meta name="keywords" content="GBIF, Global Biodiversity Information Facility, IPT, Integrated Publishing Toolkit, checklist, occurrence, metadata, DwC-A, Darwin Core, Darwin Core Archive, biodiversity data, data paper, EML" charset="UTF-8" />
+    <meta name="generator" content="IPT 2.3.4-r68469e8" />
+    <meta name="inventory" content="https://ipt.sibbr.gov.br/repatriados/inventory/dataset"/>
+    <meta name="foaf:seeAlso" content="https://ipt.sibbr.gov.br/repatriados/dcat"/>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    initForm();
+	initMenu();
+});
+</script>
+
+<title>IPT</title>
+<script type="text/javascript">
+	$(document).ready(function(){
+  		langs("en","https://ipt.sibbr.gov.br/repatriados");
+	});
+</script>
+</head>
+ 	<body>
+		<div class="page clearfix" id="page">
+			<header id="section-header" class="section section-header">
+        <div id="zone-user-wrapper" class="zone-wrapper zone-user-wrapper clearfix">
+          <div id="zone-user" class="zone zone-user clearfix container_24">
+            <div class="region-inner region-branding-inner">
+              <div class="branding-data clearfix">
+                <div class="logo-img">
+                  <a href="https://ipt.sibbr.gov.br/repatriados" rel="home" title="GBIF Logo" class="active">
+                    <img src="https://ipt.sibbr.gov.br/repatriados/images/GBIF-2015-standard-ipt.png" />
+                  </a>
+                </div>
+                <hgroup class="site-name-slogan">
+                  <h1 class="site-name"><a href="https://ipt.sibbr.gov.br/repatriados" rel="home" title="Home" class="active">Integrated Publishing Toolkit</a><span class="logoSuperscript">(IPT)</span></h1>
+                  <h6 class="site-slogan">free and open access to biodiversity data</h6>
+                </hgroup>
+                <div id="region-user-second" class="region-inner region-user-second-inner">
+                  <ul id="language-menu">
+                      <li>
+                        <form id="login-form" action="https://ipt.sibbr.gov.br/repatriados/login.do" method="post">
+                          <input type="text" size="25" name="email" value="email" class="form-reset" />
+                          <input type="password" size="20" name="password" value="password" class="form-reset" />
+<input type="submit" value="login" id="login-submit" name="login-submit"/>
+                        </form>
+                      </li>
+                    <li>
+                      <a href="#"><img src="https://ipt.sibbr.gov.br/repatriados/images/flags/flag_en.png"/></a>
+                      <ul id="languages">
+                        <!-- add more languages as translations become available. -->
+                        <!-- To see more information go to langs method in global.js -->
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- show production logo only if ipt 1) .war was not built in test mode and 2) run in production mode -->
+        <div id="zone-branding-wrapper" class="zone-wrapper zone-branding-wrapper clearfix">
+          <div id="zone-branding" class="zone zone-branding clearfix container_24">
+      		  <div class="grid_13 region region-menu" id="region-menu">
+              <nav>
+      	        <ul>
+      		    	  <li class="current"><a href="https://ipt.sibbr.gov.br/repatriados/">Home</a></li>
+      		    	  <li><a href="https://ipt.sibbr.gov.br/repatriados/about.do">About</a></li>
+      	        </ul>
+      	      </nav>
+      	    </div>
+      	  </div>
+      		<div id="search"></div>
+        </div>
+		  </header>
+		  <section id="section-content" class="section section-content">
+        <div id="zone-content-wrapper" class="zone-wrapper zone-content-wrapper clearfix">
+          <div id="zone-content" class="zone zone-content clearfix container_24">
+
+
+			<div class="grid_24 region region-content" id="region-content">
+
+
+
+            <div id="dialog-confirm" title="Are you sure?" style="display: none;"></div><script type="text/javascript" language="javascript" src="https://ipt.sibbr.gov.br/repatriados/js/jquery/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://ipt.sibbr.gov.br/repatriados/js/jquery/jquery.dataTables.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+
+    /* Sorts columns having "sType": "number". It should handle numbers with locale specific separators, e.g. 1,000 */
+    jQuery.extend( jQuery.fn.dataTableExt.oSort, {
+        "number-pre": function ( a )
+        {
+            var x = String(String(a).replace( /<[\s\S]*?>/g, "" )).replace( /,/g, '' );
+            return parseFloat( x );
+        },
+        "number-asc": function ( a, b ) {
+            return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+        },
+        "number-desc": function ( a, b ) {
+            return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+        }
+    } );
+
+    // parse a date in yyyy-mm-dd format
+    function parseDate(input) {
+            var parts = input.match(/(\d+)/g);
+            return new Date(parts[0], parts[1]-1, parts[2], parts[3], parts[4], parts[5]); // months are 0-based
+        }
+
+    /* resources list */
+    var aDataSet = [
+          ['--',
+           "<a href='https://ipt.sibbr.gov.br/repatriados/resource?r=repatriados'><if>Repatriation Data for SiBBr</a>",
+           'Not registered',
+           'Occurrence', BROKEN JSON
+           '--',
+           '3,537,502',
+           '2017-08-07',
+           '2017-08-07',
+           '--',
+           'Public',
+           '--']
+    ];
+
+    $(document).ready(function() {
+        $('#tableContainer').html( '<table cellpadding="3" cellspacing="3" border="0" class="display" id="rtable"></table>' );
+        $('#rtable').dataTable( {
+            "aaData": aDataSet,
+            "iDisplayLength": 20,
+            "bLengthChange": false,
+            "bAutoWidth": false,
+            "oLanguage": {
+                "sEmptyTable": "No resources are currently available",
+                "sZeroRecords": "No resources were found",
+                "sInfo": "Showing _START_ to _END_ of _TOTAL_",
+                "sInfoEmpty": "Showing 0 to 0 of 0",
+                "sInfoFiltered": "(filtered from _MAX_ total)",
+                "sSearch": "Filter:",
+                "oPaginate": {
+                    "sNext": "next",
+                    "sPrevious": "previous"
+
+                }
+            },
+            "aoColumns": [
+                { "sTitle": "Logo", "bSearchable": false, "bVisible": true },
+                { "sTitle": "Name"},
+                { "sTitle": "Organisation"},
+                { "sTitle": "Type"},
+                { "sTitle": "Subtype"},
+                { "sTitle": "Records", "bSearchable": false, "sType": "number"},
+                { "sTitle": "Last modified", "bSearchable": false},
+                { "sTitle": "Last publication", "bSearchable": false},
+                { "sTitle": "Next publication", "bSearchable": false},
+                { "sTitle": "Visibility", "bSearchable": false, "bVisible": false},
+                { "sTitle": "Author", "bVisible": false}
+            ],
+            "aaSorting": [[ 1, "asc" ]],
+            "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [ 0 ] }
+            ],
+            "fnInitComplete": function(oSettings) {
+                /* Next published date should never be before today's date, otherwise auto-publication must have failed.
+                   In this case, highlight the row to bring the problem to the resource manager's attention. */
+                var today = new Date();
+                for ( var i=0, iLen=oSettings.aoData.length ; i<iLen ; i++ ) {
+                  // warning fragile: index 8 must always equal next published date on both home page and manage page
+                  var nextPublishedDate = (oSettings.aoData[i]._aData[8] == '--') ? today : parseDate(oSettings.aoData[i]._aData[8]);
+                  if (today > nextPublishedDate) {
+                    oSettings.aoData[i].nTr.className += " rowInError";
+                  }
+                  // warning fragile: index 9 must always equal visibility (only on manage page)
+                    var visibility = oSettings.aoData[i]._aData[9];
+                    if (visibility && visibility.toLowerCase() == 'deleted') {
+                        oSettings.aoData[i].nTr.className += " rowInError";
+                    }
+                }
+            }
+        } );
+    } );
+</script>
+<h1 class="rtableTitle">Hosted resources available through this IPT</h1>
+<div id="tableContainer"></div>
+
+<!-- RSS Feed shown if there are resources -->
+  <p>
+    The most recently updated resources are also available as an <a href="https://ipt.sibbr.gov.br/repatriados/rss.do">RSS feed</a>. <img id="rssImage" src="https://ipt.sibbr.gov.br/repatriados/images/rss.png"/>.
+  </p>
+
+</div>
+			</div>
+			</section>
+			<footer id="section-footer" class="section section-footer">
+  			<div id="zone-footer-wrapper" class="zone-wrapper zone-footer-wrapper clearfix">
+      		<div id="zone-footer" class="zone zone-footer clearfix container_24">
+      			<ul>
+			        <li>IPT Version 2.3.4-r68469e8</li>
+			        <li><a href="http://www.gbif.org/ipt">About the IPT</a></li>
+			        <li><a href="https://github.com/gbif/ipt/wiki/IPT2ManualNotes.wiki" target="_blank">User manual</a></li>
+			        <li><a href="https://github.com/gbif/ipt/issues/new" target="_blank">Report a bug</a></li>
+			        <li><a href="https://github.com/gbif/ipt/issues/new" target="_blank">Request new feature</a></li>
+		        </ul>
+      		</div>
+  			</div>
+
+  			<div id="zone-credit-wrapper" class="zone-wrapper zone-footer-wrapper clearfix">
+          <div id="zone-credit" class="zone zone-credit clearfix container_24">
+            <aside class="grid_16 region region-credit-first" id="region-credit-first">
+              <div class="region-inner region-credit-first-inner">
+                <p>&copy;2017 <a href="http://www.gbif.org">Global Biodiversity Information Facility</a>.</p>
+              </div>
+            </aside>
+          </div>
+  			</div>
+			</footer>
+		</div>
+
+    <div id="modalbox"><div id="modalback"></div><div id="modalcontainer"><div id="modalcontent"></div></div></div>
+	</body>
+</html>

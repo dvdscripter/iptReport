@@ -75,7 +75,7 @@ func (r *Resource) bind(resource []string) (err error) {
 		if err != nil {
 			return err
 		}
-		if err = r.crawlResource(r.Link); err != nil {
+		if err = r.crawlResource(); err != nil {
 			return err
 		}
 
@@ -93,13 +93,13 @@ func (r *Resource) bind(resource []string) (err error) {
 		}
 	}
 	if resource[7] != "--" {
-		r.LastModified, err = time.Parse("2006-01-02", resource[7])
+		r.LastPublication, err = time.Parse("2006-01-02", resource[7])
 		if err != nil {
 			return err
 		}
 	}
 	if resource[8] != "--" {
-		r.LastModified, err = time.Parse("2006-01-02 15:04:05", resource[8])
+		r.NextPublication, err = time.Parse("2006-01-02 15:04:05", resource[8])
 		if err != nil {
 			return err
 		}
@@ -111,9 +111,9 @@ func (r *Resource) bind(resource []string) (err error) {
 	return nil
 }
 
-func (r *Resource) crawlResource(url string) (err error) {
+func (r *Resource) crawlResource() (err error) {
 
-	doc, err := goquery.NewDocument(url)
+	doc, err := goquery.NewDocument(r.Link)
 	if err != nil {
 		return
 	}
@@ -274,14 +274,19 @@ func main() {
 			line[4] = resource.Organization
 			line[5] = resource.Type
 			line[6] = resource.Subtype
+
 			line[7] = strconv.Itoa(resource.Events)
 			line[8] = strconv.Itoa(resource.Measurements)
 			line[9] = strconv.Itoa(resource.Occurrences)
+
 			line[10] = resource.LastModified.String()
 			line[11] = resource.LastPublication.String()
-			line[12] = resource.NextPublication.String()
-			line[13] = resource.Visibility
-			line[14] = resource.Author
+			if resource.NextPublication.After(time.Date(0001, time.January, 1, 0, 0, 0, 0, time.UTC)) {
+				line[12] = resource.NextPublication.String()
+			}
+
+			line[13] = resource.Author
+			line[14] = resource.Visibility
 			line[15] = ""
 			if err := report.Write(line); err != nil {
 				log.Fatal(err)
