@@ -1,4 +1,4 @@
-package main
+package iptReport
 
 import (
 	"io"
@@ -120,7 +120,7 @@ func TestBind(t *testing.T) {
 
 		r := Resource{}
 		// fatal only if we didn't expect error
-		if err := r.bind(tt.input); err != nil && tt.shouldError == false {
+		if err := r.Bind(tt.input); err != nil && tt.shouldError == false {
 			t.Fatal(err)
 		} else if r != tt.output && tt.shouldError == false {
 			// only check expected output if no error occur
@@ -152,12 +152,12 @@ func TestCrawIPT(t *testing.T) {
 
 	tableCases := []struct {
 		input       string
-		output      iptResult
+		output      IPTResult
 		shouldError bool
 	}{
 		{
 			index.URL,
-			iptResult{[][]string{
+			IPTResult{[][]string{
 				{
 					"--",
 					"<a href=\"https://ipt.sibbr.gov.br/repatriados/resource?r=repatriados\"><if>Repatriation Data for SiBBr</a>",
@@ -177,25 +177,25 @@ func TestCrawIPT(t *testing.T) {
 			false},
 		{
 			"THIS URL SHOULDN'T EXIST",
-			iptResult{},
+			IPTResult{},
 			true},
 		{
 			fail.URL,
-			iptResult{},
+			IPTResult{},
 			true},
 		{
 			failJSON.URL,
-			iptResult{},
+			IPTResult{},
 			true},
 	}
 
-	result := make(chan iptResult)
+	result := make(chan IPTResult)
 
 	for _, tt := range tableCases {
-		go crawlIPT(tt.input, "goeldi", result)
+		go CrawlIPT(tt.input, "goeldi", result)
 		r := <-result
-		if r.err != nil && tt.shouldError == false {
-			t.Fatal(r.err)
+		if r.Err != nil && tt.shouldError == false {
+			t.Fatal(r.Err)
 		} else if !reflect.DeepEqual(tt.output, r) && tt.shouldError == false {
 			t.Errorf("got \n%#v, want \n%#v", r, tt.output)
 		}
@@ -241,7 +241,7 @@ func TestCrawlResource(t *testing.T) {
 
 	for _, tt := range tableCases {
 		input := tt.input
-		if err := input.crawlResource(); err != nil && tt.shouldError == false {
+		if err := input.CrawlResource(); err != nil && tt.shouldError == false {
 			t.Fatal(err)
 		} else if !reflect.DeepEqual(input, tt.output) && tt.shouldError == false {
 			t.Errorf("got \n%#v, want \n%#v", input, tt.output)
@@ -287,7 +287,7 @@ func TestEscapeJSON(t *testing.T) {
 	}
 
 	for _, tt := range tableCases {
-		if r := escapeJSON(tt.input); r != tt.output {
+		if r := EscapeJSON(tt.input); r != tt.output {
 			t.Errorf("got \n%s, want \n%s", r, tt.output)
 		}
 	}
